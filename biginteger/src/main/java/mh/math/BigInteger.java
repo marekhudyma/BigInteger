@@ -16,6 +16,7 @@ public class BigInteger {
 
     }
 
+    //TODO make it faster
     public static boolean isNumberValid10(String number){
 
         if(number == null || number.length() == 0){
