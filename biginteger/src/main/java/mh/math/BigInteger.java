@@ -6,12 +6,10 @@ import java.util.Set;
 
 public class BigInteger {
 
-    private static final Set<Character> digits10 = new HashSet<Character>(Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0'));
-
     public BigInteger(String number) {
 
         if(isNumberValid10(number)){
-            throw new IllegalArgumentException();
+            throw new NumberFormatException();
         }
 
     }
@@ -24,18 +22,18 @@ public class BigInteger {
         }
 
         int position = 0;
-        for(char c : number.toCharArray()) {
+        char c[] = number.toCharArray();
 
-            if(position == 0  && number.startsWith("-") || number.startsWith("+")){
-                position++;
-                continue;
-            }
-            if(!digits10.contains(c)) {
-               return false;
-            }
-
-
+        if(c[0] == '-' || c[0] == '+'){
             position++;
+        }
+        for(;position<c.length; position++) {
+
+            char tmp = c[position];
+            if(!(tmp >= '0' && tmp <= '9')){
+                return false;
+            }
+
         }
 
         return true;
