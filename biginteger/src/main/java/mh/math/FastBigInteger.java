@@ -7,6 +7,9 @@ import java.util.Set;
 public class FastBigInteger {
 
     public FastBigInteger(String number) {
+        if(number == null){
+            throw new NullPointerException();
+        }
 
         if(isNumberValid10(number)){
             throw new NumberFormatException();
@@ -14,9 +17,8 @@ public class FastBigInteger {
 
     }
 
-    //TODO make it faster
-    public static boolean isNumberValid10(String number){
 
+    public static boolean isNumberValid10(String number){
         if(number == null || number.length() == 0){
             return false;
         }
